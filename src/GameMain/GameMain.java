@@ -28,7 +28,7 @@ public class GameMain implements BasicSetting
     
 
     //Create Map
-    String map1FilePath = "C:\\Users\\Acer\\OneDrive - Hanoi University of Science and Technology\\Desktop\\RPG_game-main\\RPG\\src\\FileText\\map1.txt";       //NOTICE: this link can be changed when moving to another device
+    String map1FilePath = "src\\FileText\\map1.txt";       //NOTICE: this link can be changed when moving to another device
     public Map map = new Map1(map1FilePath, this);
 
     
@@ -60,20 +60,12 @@ public class GameMain implements BasicSetting
         monsters.add(new Lion(8, 4));
     }
     //Clears Screen in java
-    public void clrscr()
+    public void clrscr() throws InterruptedException
     {
-        try {
-    
-            if (System.getProperty("os.name").contains("Windows"))
-    
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-    
-            else
-    
-                Runtime.getRuntime().exec("clear");
-    
-        } catch (IOException | InterruptedException ex) {}
-    
+        try {              
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+
+        } catch (IOException ex) {}    
     }
 
     // Menu of move 2nd layer
@@ -229,7 +221,7 @@ public class GameMain implements BasicSetting
             choice = keyboard.nextInt();
             switch (choice) {
                 case 1:
-      
+                
                     moveControl();
                     break;
                 case 2:
@@ -247,7 +239,6 @@ public class GameMain implements BasicSetting
         //this.map.drawMap();
     }
     
-
     public void characterMove(String direction, Character obj)            //Move with cheking collision
     {
         switch (direction) 
@@ -345,8 +336,6 @@ public class GameMain implements BasicSetting
         map.tile[map.tileManager[player.getY()][player.getX()]].applyEffectTo(player);
     }
 
-    
-    
 
 
     public static void main(String[] args) 

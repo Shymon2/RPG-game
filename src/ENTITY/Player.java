@@ -65,17 +65,21 @@ public class Player extends Character
     //Equip weapon
     public void equipItem(Item item){       
         boolean isAtkWeapon;
-            if(item.getType() == 3) 
-                isAtkWeapon = false;
-            else 
-                isAtkWeapon = true;
-        unEquipItem(item);
+        if(item.getType() == 3) 
+            isAtkWeapon = false;
+        else 
+            isAtkWeapon = true;
+        
         if(isAtkWeapon){
+            if(currentWeapon != null)
+                unEquipItem(currentWeapon);
             currentWeapon = item;
             this.setAttack(this.getAttack() + ((Weapon)item).getAtk());
             this.setRange(this.getRange() + ((Weapon)item).getRange());
         }
         else{
+            if(currentArmor != null)
+                unEquipItem(currentArmor);
             this.setMaxHp(this.getMaxHp() + ((Weapon)item).getHp());
             this.setDefense(this.getDefense() + ((Weapon)item).getDef()); 
         }
