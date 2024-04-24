@@ -32,6 +32,7 @@ public class Weapon extends Item
     public int getHp(){
         return hp;
     }
+    
 
     @Override
     public String getMark(){return "WP";}

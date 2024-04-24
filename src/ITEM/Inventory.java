@@ -69,7 +69,7 @@ public class Inventory
         //inven.removeItemByIndex(0);
         //inven.displayInventory();
         //System.out.println("\n");
-
+        
 
     }
     

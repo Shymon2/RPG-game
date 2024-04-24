@@ -169,6 +169,7 @@ public class GameMain implements BasicSetting
                     do{               
                         System.out.println("1. Equip item");
                         System.out.println("2. Unequip item");
+                        System.out.println("3. Remove item");
                         System.out.print("Enter your choice: ");
                         choice1 = keyboard.nextInt();
                         if(choice1 == 1){
@@ -183,6 +184,15 @@ public class GameMain implements BasicSetting
                         else if (choice1 == 2){
                             player.unEquipItem(((Weapon)inventory.items.get(choice - 1)));
                             System.out.println("Unequip sucessful");
+                            System.out.println("\n------------------------------------------------------\n");
+                            inventory.displayInventory();
+                            System.out.println("Attack weapon: " + player.getCurrentWeapon());
+                            System.out.println("Defense weapon: " + player.getCurrentArmor());
+                            status1 = false;
+                        }
+                        else if(choice1 == 3){
+                            inventory.items.remove(choice - 1);
+                            System.out.println("Remove sucessful");
                             System.out.println("\n------------------------------------------------------\n");
                             inventory.displayInventory();
                             System.out.println("Attack weapon: " + player.getCurrentWeapon());
@@ -335,7 +345,6 @@ public class GameMain implements BasicSetting
     {
         map.tile[map.tileManager[player.getY()][player.getX()]].applyEffectTo(player);
     }
-
 
 
     public static void main(String[] args) 
